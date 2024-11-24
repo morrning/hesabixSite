@@ -1,17 +1,488 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fa">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="جت" name="author"/>
+		<meta content="Pintex - الگوی صفحه فرود و نرم افزار تلفن همراه" name="description"/>
+		<meta content="پاسخگو ، الگوی HTML5 ، JTHEMES ، موبایل ، برنامه ، نرم افزار ، یک صفحه ، فرود ، محصول دیجیتال ، برنامه تلفن همراه" name="keywords"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport"/>
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<!-- FAVICON AND TOUCH ICONS -->
+		<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+		<link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+		<link href="images/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+		<link href="images/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+		<link href="images/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+		<link href="images/apple-touch-icon.png" rel="apple-touch-icon"/>
+		<link
+		href="images/apple-touch-icon.png" rel="icon" type="image/x-icon"/>
+		<!-- GOOGLE FONTS -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+		<link
+		href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+		<!-- BOOTSTRAP CSS -->
+		<link
+		href="css/bootstrap.min.rtl.css" rel="stylesheet"/>
+		<!-- FONT ICONS -->
+		<link
+		href="css/flaticon.rtl.css" rel="stylesheet"/>
+		<!-- PLUGINS STYLESHEET -->
+		<link href="css/menu.rtl.css" rel="stylesheet"/>
+		<link href="css/dropdown-effects/fade-down.rtl.css" id="effect" media="all" rel="stylesheet"/>
+		<link href="css/magnific-popup.rtl.css" rel="stylesheet"/>
+		<link href="css/owl.carousel.min.rtl.css" rel="stylesheet"/>
+		<link href="css/owl.theme.default.min.rtl.css" rel="stylesheet"/>
+		<link
+		href="css/lunar.rtl.css" rel="stylesheet"/>
+		<!-- ON SCROLL ANIMATION -->
+		<link
+		href="css/animate.css" rel="stylesheet"/>
+		<!-- TEMPLATE CSS -->
+		<link
+		href="css/pink-theme.rtl.css" rel="stylesheet"/>
+		<!-- Style Switcher CSS -->
+		<link href="css/blue-theme.rtl.css" rel="alternate stylesheet" title="blue-theme"/>
+		<link href="css/indigo-theme.rtl.css" rel="alternate stylesheet" title="indigo-theme"/>
+		<link href="css/orchid-theme.rtl.css" rel="alternate stylesheet" title="orchid-theme"/>
+		<link href="css/purple-theme.rtl.css" rel="alternate stylesheet" title="purple-theme"/>
+		<link href="css/skyblue-theme.rtl.css" rel="alternate stylesheet" title="skyblue-theme"/>
+		<link
+		href="css/violet-red-theme.rtl.css" rel="alternate stylesheet" title="violet-red-theme"/>
+		<!-- RESPONSIVE CSS -->
+		<link href="css/responsive.rtl.css" rel="stylesheet"/> {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		<!-- PRELOADER SPINNER
+								============================================= -->
+		<div id="loading">
+			<div class="loading--theme" id="loader">
+				<div class="cssload-spinner"></div>
+			</div>
+		</div>
+		<!-- PAGE CONTENT
+						============================================= -->
+		<div
+			class="page" id="page">
+			<!-- HEADER
+						          ============================================= -->
+			<header class="tra-menu navbar-light white-scroll" id="header">
+				<div
+					class="header-wrapper">
+					<!-- MOBILE HEADER -->
+					<div class="wsmobileheader clearfix">
+						<span class="smllogo">
+							<a href="#hero-1">
+								<img alt="mobile-logo" class="lt-img" src="images/logo.png"/>
+								<img alt="mobile-logo" class="dt-img" src="images/logo-white.png"/>
+							</a>
+						</span>
+						<a class="wsanimated-arrow" id="wsnavtoggle">
+							<span></span>
+						</a>
+					</div>
+					<!-- NAVIGATION MENU -->
+					<div class="wsmainfull menu clearfix">
+						<div
+							class="wsmainwp clearfix">
+							<!-- HEADER BLACK LOGO -->
+							<div class="desktoplogo">
+								<a class="logo-black" href="#hero-1">
+									<img alt="logo" class="lt-img" src="images/logo.png"/>
+									<img alt="logo" class="dt-img" src="images/logo-white.png"/>
+								</a>
+							</div>
+							<!-- HEADER WHITE LOGO -->
+							<div class="desktoplogo">
+								<a class="logo-white" href="#hero-1"><img alt="logo" src="images/logo-white.png"/></a>
+							</div>
+							<!-- MAIN MENU -->
+							<nav class="wsmenu clearfix">
+								<ul
+									class="wsmenu-list nav-theme">
+									<!-- DROPDOWN SUB MENU -->
+									<li aria-haspopup="true">
+										<a class="h-link" href="#">در مورد<span class="wsarrow"></span>
+										</a>
+										<ul class="sub-menu ico-10">
+											<li aria-haspopup="true" class="h-link">
+												<a href="#benefits">چرا پینتکس؟</a>
+											</li>
+											<li aria-haspopup="true" class="h-link">
+												<a href="#how-it-works">چگونه کار می کند</a>
+											</li>
+											<li aria-haspopup="true" class="h-link">
+												<a href="changelog.html">یادداشت ها</a>
+											</li>
+										</ul>
+									</li>
+									<!-- SIMPLE NAVIGATION LINK -->
+									<li aria-haspopup="true" class="nl-simple">
+										<a class="h-link" href="#features">ویژگی</a>
+									</li>
+									<!-- MEGAMENU -->
+									<li aria-haspopup="true" class="mg_link">
+										<a class="h-link" href="#">صفحات<span class="wsarrow"></span>
+										</a>
+										<div class="wsmegamenu w-75 clearfix">
+											<div class="container">
+												<div
+													class="row">
+													<!-- MEGAMENU LINKS -->
+													<ul class="col-md-12 col-lg-3 link-list">
+														<li class="fst-li">
+															<a href="about.html">درباره ما</a>
+														</li>
+														<li>
+															<a href="careers.html">مشاغل<span class="sm-info">4</span>
+															</a>
+														</li>
+														<li>
+															<a href="career-role.html">جزئیات شغلی</a>
+														</li>
+														<li>
+															<a href="reviews.html">توصیفات</a>
+														</li>
+														<li>
+															<a href="contacts.html">با ما تماس بگیرید</a>
+														</li>
+													</ul>
+													<!-- MEGAMENU LINKS -->
+													<ul class="col-md-12 col-lg-3 link-list">
+														<li class="fst-li">
+															<a href="features.html">ویژگی های اصلی</a>
+														</li>
+														<li>
+															<a href="integrations.html">ادغام</a>
+														</li>
+														<li>
+															<a href="changelog.html">تعویض</a>
+														</li>
+														<li>
+															<a href="more-apps.html">برنامه های بیشتر</a>
+														</li>
+														<li>
+															<a href="download.html">صفحه بارگیری</a>
+														</li>
+													</ul>
+													<!-- MEGAMENU LINKS -->
+													<ul class="col-md-12 col-lg-3 link-list">
+														<li class="fst-li">
+															<a href="pricing-1.html">صفحه قیمت گذاری شماره 1</a>
+														</li>
+														<li>
+															<a href="pricing-1.html">صفحه قیمت گذاری شماره 2</a>
+														</li>
+														<li>
+															<a href="faqs.html">صفحه سؤالات متداول</a>
+														</li>
+														<li>
+															<a href="blog-listing.html">لیست وبلاگ</a>
+														</li>
+														<li>
+															<a href="single-post.html">پست وبلاگ مجرد</a>
+														</li>
+													</ul>
+													<!-- MEGAMENU LINKS -->
+													<ul class="col-md-12 col-lg-3 link-list">
+														<li class="fst-li">
+															<a href="cookies.html">کوکی ها</a>
+														</li>
+														<li>
+															<a href="privacy.html">حریم شخصی</a>
+														</li>
+														<li>
+															<a href="login.html">صفحه ورود</a>
+														</li>
+														<li>
+															<a href="signup.html">صفحه ثبت نام</a>
+														</li>
+														<li>
+															<a href="reset-password.html">بازنشانی رمز عبور</a>
+														</li>
+													</ul>
+												</div>
+												<!-- End row -->
+											</div>
+											<!-- End container -->
+										</div>
+										<!-- End wsmegamenu -->
+									</li>
+									<!-- END MEGAMENU -->
+									<!-- SIMPLE NAVIGATION LINK -->
+									<li aria-haspopup="true" class="nl-simple">
+										<a class="h-link" href="#pricing">قیمت گذاری</a>
+									</li>
+									<!-- DROPDOWN SUB MENU -->
+									<li aria-haspopup="true">
+										<a class="h-link" href="#">منابع<span class="wsarrow"></span>
+										</a>
+										<ul class="sub-menu ico-10">
+											<li aria-haspopup="true" class="h-link">
+												<a href="#reviews">توصیفات</a>
+											</li>
+											<li aria-haspopup="true" class="h-link">
+												<a href="more-apps.html">محصولات بیشتر</a>
+											</li>
+											<li aria-haspopup="true" class="h-link">
+												<a href="blog-listing.html">وبلاگ پینتکس</a>
+											</li>
+										</ul>
+									</li>
+									<!-- SIMPLE NAVIGATION LINK -->
+									<li aria-haspopup="true" class="nl-simple">
+										<a class="h-link" href="#faqs">متداول</a>
+									</li>
+									<!-- DOWNLOAD BUTTON -->
+									<li aria-haspopup="true" class="nl-simple mobile-last-link">
+										<a class="btn r-36 ico-20 ico-right btn--tra-white hover--theme last-link" href="#download">بارگیری کردن<span class="flaticon-download-file"></span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<!-- END MAIN MENU -->
+						</div>
+					</div>
+					<!-- END NAVIGATION MENU -->
+				</div>
+				<!-- End header-wrapper -->
+			</header>
+			<!-- END HEADER -->
+			{% block body %}{% endblock %}
+
+
+			<!-- FOOTER
+						          ============================================= -->
+			<footer class="pt-100 footer-3 footer division">
+				<div
+					class="container">
+					<!-- FOOTER CONTENT -->
+					<div
+						class="row">
+						<!-- FOOTER INFO -->
+						<div class="col-lg-3">
+							<div
+								class="footer-info">
+								<!-- LOGO -->
+								<img alt="footer-logo" class="footer-logo lt-img" src="images/logo.png"/>
+								<img
+								alt="footer-logo" class="footer-logo dt-img" src="images/logo-white.png"/>
+								<!-- QR CODE -->
+								<div class="footer-qr-code r-16">
+									<img alt="qr-code-image" class="img-fluid" src="images/qr-code.png"/>
+								</div>
+							</div>
+						</div>
+						<!-- FOOTER LINKS -->
+						<div class="col-md-9 col-lg-6 col-xl-7">
+							<div
+								class="row footer-links clearfix">
+								<!-- FOOTER LINKS #1 -->
+								<div class="col-md-4">
+									<div
+										class="fl-1">
+										<!-- Title -->
+										<h6 class="d-title">پینتکس</h6>
+										<h6 class="m-title">پینتکس</h6>
+										<!-- Links -->
+										<ul class="foo-links clearfix">
+											<li>
+												<p>
+													<a href="features.html">چرا پینتکس؟</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="changelog.html">چه جدید است</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="pricing-2.html">برنامه های قیمت گذاری</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="download.html">بارگیری کردن</a>
+												</p>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- END FOOTER LINKS #1 -->
+								<!-- FOOTER LINKS #2 -->
+								<div class="col-md-4">
+									<div
+										class="fl-2">
+										<!-- Title -->
+										<h6 class="d-title">کشف کردن</h6>
+										<h6 class="m-title">کشف کردن</h6>
+										<!-- Links -->
+										<ul class="foo-links clearfix">
+											<li>
+												<p>
+													<a href="reviews.html">توصیفات</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="faqs.html">راهنما و پشتیبانی</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="contacts.html">ویرایشگر کمک</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="more-apps.html">محصولات بیشتر</a>
+												</p>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- END FOOTER LINKS #2 -->
+								<!-- FOOTER LINKS #3 -->
+								<div class="col-md-4">
+									<div
+										class="fl-3">
+										<!-- Title -->
+										<h6 class="d-title">شرکت</h6>
+										<h6 class="m-title">شرکت</h6>
+										<!-- Links -->
+										<ul class="foo-links clearfix">
+											<li>
+												<p>
+													<a href="about.html">درباره ما</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="careers.html">مشاغل</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="blog-listing.html">وبلاگ ما</a>
+												</p>
+											</li>
+											<li>
+												<p>
+													<a href="contacts.html">با ما تماس بگیرید</a>
+												</p>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- END FOOTER LINKS #3 -->
+							</div>
+						</div>
+						<!-- END FOOTER LINKS -->
+						<!-- FOOTER CONNECT -->
+						<div class="col-md-3 col-lg-3 col-xl-2">
+							<div
+								class="footer-connect">
+								<!-- Title -->
+								<h6>ارتباط با ما</h6>
+								<!-- Social Links -->
+								<ul class="footer-socials ico-25 clearfix">
+									<li>
+										<a href="#">
+											<span class="flaticon-facebook"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="flaticon-twitter-1"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="flaticon-github"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="flaticon-youtube"></span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- END FOOTER CONTENT -->
+					<hr/>
+					<!-- FOOTER DIVIDER LINE -->
+					<!-- BOTTOM FOOTER -->
+						<div class="bottom-footer"> <div
+							class="row row-cols-1 row-cols-md-2 d-flex align-items-center">
+							<!-- FOOTER COPYRIGHT -->
+							<div class="col">
+								<div class="footer-copyright">
+									<p class="p-sm">
+										© 2024 Pintex.<span>تمامی حقوق محفوظ است</span>
+									</p>
+								</div>
+							</div>
+							<!-- FOOTER LINKS -->
+							<div class="col">
+								<ul class="bottom-footer-list ico-10 text-end">
+									<li>
+										<p class="p-sm">
+											<a href="privacy.html">سیاست حفظ حریم</a>
+										</p>
+									</li>
+									<li class="footer-list-divider">
+										<p>
+											<span class="flaticon-minus-1"></span>
+										</p>
+									</li>
+									<li>
+										<p class="p-sm">
+											<a href="terms.html">شرایط و ضوابط</a>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- End row -->
+					</div>
+					<!-- BOTTOM FOOTER -->
+				</div>
+				<!-- End container -->
+			</footer>
+			<!-- END FOOTER -->
+		</div>
+		<!-- END PAGE CONTENT -->
+		<!-- EXTERNAL SCRIPTS
+				      ============================================= -->
+		<script src="js/jquery-3.7.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/jquery.easing.min.js"></script>
+		<script src="js/jquery.appear.js"></script>
+		<script src="js/menu.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/isotope.pkgd.min.js"></script>
+		<script src="js/jquery.magnific-popup.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/jquery.ajaxchimp.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/lunar.js"></script>
+		<script src="js/wow.js"></script>
+		<script src="js/cookies-message.js"></script>
+		<!-- Custom Script -->
+		<script src="js/custom.js"></script>
+	</body>
 </html>

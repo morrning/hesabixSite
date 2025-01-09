@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,5 +15,16 @@ class GeneralController extends AbstractController
     public function app_home(): Response
     {
         return $this->render('general/home.html.twig');
+    }
+
+    #[Route('/sitemap.xml', name: 'app_sitemap')]
+    public function app_sitemap(EntityManagerInterface $em): Response
+    {
+        $response = new Response();
+        $response->headers->set('Content-Type', 'text/xml');
+        $posts = $em->getRepository(Post::class)->findAll();
+        return $this->render('general/sitemap.html.twig',[
+            'posts'=>$posts
+        ],$response);
     }
 }

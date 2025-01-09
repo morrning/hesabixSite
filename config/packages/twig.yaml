@@ -1,5 +1,11 @@
 twig:
     file_name_pattern: '*.twig'
+    form_themes: [
+        'bootstrap_5_layout.html.twig',
+    ]
+    globals:
+        Jdate: "@Jdate"
+        twigFunctions: "@twigFunctions"
 
 when@test:
     twig:

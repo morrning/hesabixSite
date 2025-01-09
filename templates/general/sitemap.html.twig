@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+						            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+	<url>
+		<loc>{{ absolute_url(path('app_home')) }}</loc>
+		<lastmod>2025-01-09T06:58:03+00:00</lastmod>
+		<priority>1.00</priority>
+	</url>
+	{% for post in posts %}
+		{% if post.cat.code == 'plain' %}
+			<url>
+				<loc>{{ absolute_url(path('app_page',{'url':post.url})) }}</loc>
+				<lastmod>{{ twigFunctions.getctime(post.dateSubmit) }}</lastmod>
+				<priority>1.00</priority>
+			</url>
+		{% endif %}
+	{% endfor %}
+</urlset>

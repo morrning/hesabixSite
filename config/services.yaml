@@ -22,3 +22,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    Jdate:
+        class: App\Service\Jdate
+    twigFunctions:
+        class: App\Service\twigFunctions
+        arguments: [ "@doctrine.orm.entity_manager" ]

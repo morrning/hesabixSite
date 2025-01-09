@@ -68,6 +68,9 @@ class Post
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'post', orphanRemoval: true)]
     private Collection $comments;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $intro = null;
+
     public function __construct()
     {
         $this->tree = new ArrayCollection();
@@ -273,6 +276,18 @@ class Post
                 $comment->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIntro(): ?string
+    {
+        return $this->intro;
+    }
+
+    public function setIntro(?string $intro): static
+    {
+        $this->intro = $intro;
 
         return $this;
     }

@@ -45,4 +45,16 @@ class PostRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+    public function findBycat($cat='blog' , $count = 3): array
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.cat', 'c')
+            ->where('c.code = :cat')
+            ->setParameter('cat', $cat)
+            ->setMaxResults($count)
+            ->orderBy('p.dateSubmit','DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

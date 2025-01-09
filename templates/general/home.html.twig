@@ -6,8 +6,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12 my-3">
-				<div class="p-1 mb-4 bg-body-primary rounded-3">
-					<div class="container-fluid py-5">
+				<div class="p-1 mb-4">
+					<div class="container-fluid pt-md-5 pt-sm-2">
 						<div class="row align-items-center">
 							<div class="col-sm-12 col-md-7 mb-3 text-center">
 								<h1 class="fs-2 fw-bold text-primary">شروعی ساده و آسان
@@ -26,11 +26,11 @@
 							<div class="col-12">
 								<div class="card text-bg-light mb-3">
 									<div class="card-body text-center">
-										<p class="card-text">
-                                        حسابیکس یک پلتفرم مدیریت کسب‌و‌کار که پاسخگوی تمام اهداف تجاری شما از یک فروشگاه کوچک تا یک مجتمع بازگانی بزرگ است
-                                        <br>
-                                        کافی است گام اول را بردارید،جهت پیشبرد اهدافتان ما در کنار شما هستیم.
-                                        </p>
+										<p class="card-text text-body-secondary">
+											حسابیکس یک پلتفرم مدیریت کسب‌و‌کار که پاسخگوی تمام اهداف تجاری شما از یک فروشگاه کوچک تا یک مجتمع بازگانی بزرگ است
+											<br>
+											کافی است گام اول را بردارید،جهت پیشبرد اهدافتان در کنار شما هستیم.
+										</p>
 									</div>
 								</div>
 							</div>
@@ -38,9 +38,31 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-12 mb-4">
+				<div class="container bg-body-tertiary rounded-3 p-4">
+					<h4 class="text-center mb-4 text-primary">حامیان حسابیکس</h1>
+					<div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center">
+						<div class="col">
+							<div class="card h-100 border-0 shadow-sm">
+								<img src="{{asset('img/sp/parspack-logo.png')}}" class="card-img-top p-3" alt="Sponsor 1 Logo">
+							</div>
+						</div>
+						<div class="col">
+							<div class="card h-100 border-0 shadow-sm">
+								<img src="{{asset('img/sp/melipayamak.png')}}" class="card-img-top p-3" alt="Sponsor 1 Logo">
+							</div>
+						</div>
+						<div class="col">
+							<div class="card h-100 border-0 shadow-sm">
+								<img src="{{asset('img/sp/raddata.png')}}" class="card-img-top p-3" alt="Sponsor 1 Logo">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="col-12">
 				<div class="p-1 mb-4">
-					<div class="container-fluid py-5">
+					<div class="container-fluid">
 						<div class="row align-items-center">
 							<div class="col-sm-12 col-md-3 mb-3 text-center">
 								<img src="{{asset('img/viewMobile.png')}}" class="img-fluid" alt="نرم افزار حسابداری حسابیکس"/>
@@ -59,6 +81,31 @@
 									</li>
 								</ul>
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="p-1 mb-4">
+					<div class="container-fluid">
+						<h3 class="text-primary fs-2 text-center py-3">از وبلاگ حسابیکس</h3>
+						<div class="row">
+							{% for post in posts %}
+								<div class="col-sm-12 col-md-4 mb-3">
+									<div class="card d-flex position-relative">
+										<img src="{{asset('uploaded/' ~ post.mainPic )}}" class="card-img-top" alt="{{ post.title}}">
+										<div class="card-body">
+											<h3 class="card-title text-primary fs-4">{{post.title}}</h3>
+											<p class="card-text">{{ post.intro }}</p>
+											<div class="card-text text-start align-items-center">
+												<small class="text-body-secondary float-end">{{ Jdate.jdate('Y/n/d',post.dateSubmit) }}</small>
+												<a href="{{path('app_blog_post',{'url':post.url})}}" class="float-start btn btn-primary btn-sm rounded-4 stretched-link">ادامه مطلب</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+
 						</div>
 					</div>
 				</div>

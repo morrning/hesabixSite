@@ -12,9 +12,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class GeneralController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function app_home(): Response
+    public function app_home(EntityManagerInterface $em): Response
     {
-        return $this->render('general/home.html.twig');
+        return $this->render('general/home.html.twig', [
+            'posts' => $em->getRepository(Post::class)->findBycat('blog', 3)
+        ]);
     }
 
     #[Route('/sitemap.xml', name: 'app_sitemap')]
@@ -23,8 +25,8 @@ class GeneralController extends AbstractController
         $response = new Response();
         $response->headers->set('Content-Type', 'text/xml');
         $posts = $em->getRepository(Post::class)->findAll();
-        return $this->render('general/sitemap.html.twig',[
-            'posts'=>$posts
-        ],$response);
+        return $this->render('general/sitemap.html.twig', [
+            'posts' => $posts
+        ], $response);
     }
 }

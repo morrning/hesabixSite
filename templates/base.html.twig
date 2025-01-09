@@ -24,7 +24,7 @@
 	<body>
 		<nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="{{path('app_home')}}">
+				<a class="navbar-brand text-primary" href="{{path('app_home')}}">
 					<img src="{{asset('/favicon/favicon.svg')}}" alt="نرم افزار حسابداری آنلاین حسابیکس" width="30" height="30">
 					حسابیکس
 				</a>
@@ -63,16 +63,22 @@
 		<footer class="py-3 my-4">
 			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
 				<li class="nav-item">
-					<a href="{{path('app_page',{'url':'hsx'})}}" class="nav-link px-2 text-body-secondary">توکن HSX</a>
+					<a href="{{path('app_page',{'url':'hsx'})}}" class="nav-link px-2">توکن HSX</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{path('app_page',{'url':'contact'})}}" class="nav-link px-2 text-body-secondary">مستندات API</a>
+					<a href="{{path('app_page',{'url':'contact'})}}" class="nav-link px-2">مستندات API</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{path('app_page',{'url':'terms'})}}" class="nav-link px-2 text-body-secondary">قوانین ارائه خدمات</a>
+					<a href="https://github.com/morrning" target="_blank" class="nav-link px-2">مخازن کد</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{path('app_page',{'url':'privacy'})}}" class="nav-link px-2 text-body-secondary">حریم خصوصی</a>
+					<a href="{{path('app_page',{'url':'open-source'})}}" class="nav-link px-2">متن‌باز</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('app_page',{'url':'terms'})}}" class="nav-link px-2">قوانین ارائه خدمات</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('app_page',{'url':'privacy'})}}" class="nav-link px-2">حریم خصوصی</a>
 				</li>
 			</ul>
 			<p class="text-center text-body-secondary">

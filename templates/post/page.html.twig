@@ -9,10 +9,10 @@
 		{{ item.plain | raw}}
 	{% endif %}
 	{% if item.body is not null %}
-		<div class="container">
+		<div class="container mt-3">
 			<div class="row">
 				<div class="col">
-					<h1 class="text-primary">{{item.title}}</h1>
+					<h1 class="text-primary py-4">{{item.title}}</h1>
 					{{ item.body | raw}}
 				</div>
 			</div>

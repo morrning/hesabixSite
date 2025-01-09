@@ -4,6 +4,10 @@
 	{{ item.title }}
 {% endblock %}
 
+{% block des %}
+	{{ item.intro }}
+{% endblock %}
+
 {% block body %}
 	{% if item.plain is not null %}
 		{{ item.plain | raw}}

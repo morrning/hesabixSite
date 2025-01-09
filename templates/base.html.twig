@@ -5,7 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta lang="fa">
 		<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-		<meta content="{% block des %}{% if block('des') is empty %}{% endif %}{% endblock %}" name="description"/>
+		{% set des = twigFunctions.systemSettings.des %}
+		{% if block('des') is defined %}
+			{% set _block = block('des') %}
+		{% endif %}
+		{% if _block is defined %}
+			<meta content="{{twigFunctions.systemSettings.des}}" name="description"/>
+		{% else %}
+			<meta content="{{block('des')}}" name="description"/>
+		{% endif %}
 		<meta content="Babak Alizadeh" name="author"/>
 		<title>حسابیکس -
 			{% block title %}{% endblock %}

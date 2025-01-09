@@ -33,14 +33,14 @@ class PostRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function findPageByUrl($value): ?Post
+    public function findByUrlFilterCat($value,$cat='plain'): ?Post
     {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.cat', 'c')
             ->where('c.code = :cat')
             ->andWhere('p.url = :url')
             ->setParameter('url', $value)
-            ->setParameter('cat', 'plain')
+            ->setParameter('cat', $cat)
             ->getQuery()
             ->getOneOrNullResult()
         ;

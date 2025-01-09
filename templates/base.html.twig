@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta lang="fa">
 		<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-		<meta content="حسابیکس برترین نرم افزار حسابداری ابری و رایگان" name="description"/>
+		<meta content="{% block des %}{% if block('des') is empty %}{% endif %}{% endblock %}" name="description"/>
 		<meta content="Babak Alizadeh" name="author"/>
 		<title>حسابیکس -
 			{% block title %}{% endblock %}

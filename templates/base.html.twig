@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta lang="fa">
+		<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+		<meta content="حسابیکس برترین نرم افزار حسابداری ابری و رایگان" name="description"/>
+		<meta content="Babak Alizadeh" name="author"/>
+		<title>حسابیکس -
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('/favicon/favicon.ico' )}}">
+		<link rel="stylesheet" href="{{asset('/fonts/yekanbakh/fontiran.css')}}">
+		{% block stylesheets %}
+			{# 'app' must match the first argument to addEntry() in webpack.config.js #}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{path('app_home')}}">
+					<img src="{{asset('/favicon/favicon.svg')}}" alt="نرم افزار حسابداری آنلاین حسابیکس" width="30" height="30">
+					حسابیکس
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_home')}}">صفحه نخست</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_home')}}">راهنمای جامع</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_home')}}">وبلاگ</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_page',{'url':'sponsors'})}}">حامیان مالی</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_page',{'url':'about'})}}">داستان حسابیکس</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('app_page',{'url':'contact'})}}">تماس با ما</a>
+						</li>
+					</ul>
+					<span class="d-flex flex-fill justify-content-end">
+						<a target="_blank" class="btn btn-sm btn-primary rounded-4" href="https://app.hesabix.ir">ورود / عضویت</a>
+					</span>
+				</div>
+			</div>
+		</nav>
+		{% block body %}{% endblock %}
+
+		<footer class="py-3 my-4">
+			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+				<li class="nav-item">
+					<a href="{{path('app_page',{'url':'hsx'})}}" class="nav-link px-2 text-body-secondary">توکن HSX</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('app_page',{'url':'contact'})}}" class="nav-link px-2 text-body-secondary">مستندات API</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('app_page',{'url':'terms'})}}" class="nav-link px-2 text-body-secondary">قوانین ارائه خدمات</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('app_page',{'url':'privacy'})}}" class="nav-link px-2 text-body-secondary">حریم خصوصی</a>
+				</li>
+			</ul>
+			<p class="text-center text-body-secondary">
+				با خاطری آسوده،استوار بر روی راهکار‌های ابری پارس‌پک
+			</p>
+		</footer>
+	</body>
+</html>

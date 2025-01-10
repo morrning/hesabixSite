@@ -2,19 +2,22 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Post;
+use App\Entity\Tree;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Locale;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\LocaleDto;
 
 class DashboardController extends AbstractDashboardController
 {
-    #[Route('/admin', name: 'admin')]
-    public function index(): Response
+    #[Route('/admin/{_locale}', name: 'admin')]
+    public function index($_locale = 'fa'): Response
     {
-        return parent::index();
+        //return parent::index();
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -30,42 +33,27 @@ class DashboardController extends AbstractDashboardController
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
-        // return $this->render('some/path/my-dashboard.html.twig');
+        return $this->render('admin/dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            // the name visible to end users
-            ->setTitle('ACME Corp.')
             // you can include HTML contents too (e.g. to link to an image)
-            ->setTitle('<img src="..."> ACME <span class="text-small">Corp.</span>')
+            ->setTitle('پیشخوان')
 
             // by default EasyAdmin displays a black square as its default favicon;
             // use this method to display a custom favicon: the given path is passed
             // "as is" to the Twig asset() function:
             // <link rel="shortcut icon" href="{{ asset('...') }}">
-            ->setFaviconPath('favicon.svg')
+            ->setFaviconPath('favicon/favicon.ico')
 
             // the domain used by default is 'messages'
-            ->setTranslationDomain('my-custom-domain')
-
-            // there's no need to define the "text direction" explicitly because
-            // its default value is inferred dynamically from the user locale
-            ->setTextDirection('ltr')
+            ->setTranslationDomain('admin')
 
             // set this option if you prefer the page content to span the entire
             // browser width, instead of the default design which sets a max width
             ->renderContentMaximized()
-
-            // set this option if you prefer the sidebar (which contains the main menu)
-            // to be displayed as a narrow column instead of the default expanded design
-            ->renderSidebarMinimized()
-
-            // by default, users can select between a "light" and "dark" mode for the
-            // backend interface. Call this method if you prefer to disable the "dark"
-            // mode for any reason (e.g. if your interface customizations are not ready for it)
-            ->disableDarkMode()
 
             // by default, the UI color scheme is 'auto', which means that the backend
             // will use the same mode (light/dark) as the operating system and will
@@ -79,12 +67,25 @@ class DashboardController extends AbstractDashboardController
             // by default, all backend URLs are generated as absolute URLs. If you
             // need to generate relative URLs instead, call this method
             ->generateRelativeUrls()
+
+            ->setLocales(['en','fa'])
+             // to further customize the locale option, pass an instance of
+            // EasyCorp\Bundle\EasyAdminBundle\Config\Locale
         ;
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        return [
+            MenuItem::linkToDashboard('پیشخوان', 'fa fa-home'),
+
+            MenuItem::section('پست بلاگ'),
+            MenuItem::linkToCrud('دسته بندی', 'fa fa-tags', Tree::class),
+            MenuItem::linkToCrud('محتوا', 'fa fa-file-text', Post::class),
+
+            MenuItem::section('کاربران'),
+            MenuItem::linkToCrud('کاربران', 'fa fa-user', User::class),
+        ];
     }
+
 }

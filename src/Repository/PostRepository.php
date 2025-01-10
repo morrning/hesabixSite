@@ -58,4 +58,16 @@ class PostRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findAllBycat($cat = 'blog'): array
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.cat', 'c')
+            ->where('c.code = :cat')
+            ->setParameter('cat', $cat)
+            ->orderBy('p.dateSubmit', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

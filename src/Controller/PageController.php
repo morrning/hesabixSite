@@ -93,4 +93,13 @@ class PageController extends AbstractController
             'trees' => $tress,
         ]);
     }
+
+    #[Route('/changes', name: 'app_changes')]
+    public function app_changes(EntityManagerInterface $entityManagerInterface): Response
+    {
+        $posts = $entityManagerInterface->getRepository(Post::class)->findAllByCat('changelog');
+        return $this->render('post/versions.html.twig', [
+            'items' => $posts,
+        ]);
+    }
 }

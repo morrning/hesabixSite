@@ -19,3 +19,11 @@ a.nav-link:hover {
     margin-right: auto;
     margin-left: 0;
 }
+
+pre {
+    border-radius: 0.5rem;
+    direction: ltr;
+    background-color: #d6d6df;
+    padding: 0.9rem 0.8rem;
+    color: blue;
+}

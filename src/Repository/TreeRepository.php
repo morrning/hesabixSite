@@ -16,6 +16,17 @@ class TreeRepository extends ServiceEntityRepository
         parent::__construct($registry, Tree::class);
     }
 
+    public function findAllByCat($cat = 'guide'): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.cat', 'c')
+            ->where('c.code = :cat')
+            ->setParameter('cat', $cat)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     //    /**
     //     * @return Tree[] Returns an array of Tree objects
     //     */

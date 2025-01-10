@@ -1,11 +1,21 @@
-body { 
-    font-family: "Yekan Bakh FaNum"; 
+body {
+    font-family: "Yekan Bakh FaNum";
     font-feature-settings: "kern" on, "liga" on, "dlig" on;
     -moz-font-feature-settings: "kern" on, "liga" on, "dlig" on;
     -webkit-font-feature-settings: "kern" on, "liga" on, "dlig" on;
     -ms-font-feature-settings: "kern" on, "liga" on, "dlig" on;
     -o-font-feature-settings: "kern" on, "liga" on, "dlig" on;
 }
-a.nav-link:hover{
+
+a.nav-link:hover {
     color: #1743bb;
+}
+
+.rul{
+    text-decoration: none;
+}
+
+.accordion-button:after {
+    margin-right: auto;
+    margin-left: 0;
 }

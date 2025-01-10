@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Cat;
 use App\Entity\Post;
+use App\Entity\Tree;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,13 +24,25 @@ class PageController extends AbstractController
     }
 
     #[Route('/blog/{page}', name: 'app_blog_home')]
-    public function app_blog_home($page = 1, EntityManagerInterface $entityManagerInterface, string $url): Response
+    public function app_blog_home(EntityManagerInterface $entityManagerInterface, $page = 1): Response
     {
-        $item = $entityManagerInterface->getRepository(Post::class)->findByUrlFilterCat($url, 'blog');
-        if (!$item)
-            throw $this->createNotFoundException();
+        $perpage = 6;
+        $posts = $entityManagerInterface->getRepository(Post::class)->findByCat('blog',$perpage,$page);
+        $cat = $entityManagerInterface->getRepository(Cat::class)->findOneBy(['code'=>'blog']);
+        $count = $entityManagerInterface->getRepository(Post::class)->count(['cat'=>$cat]);
+        if(fmod($count,$perpage) == 0){
+            $maxpages = $count/$perpage;
+        }
+        else{
+            $maxpages = ($count/$perpage) + 1;
+        }
+        $maxpages = $count / $perpage;
         return $this->render('post/blog_home.html.twig', [
-            'item' => $item,
+            'posts' => $posts,
+            'page' => $page,
+            'perpage'=> $perpage,
+            'count' => $count,
+            'maxpages' => $maxpages
         ]);
     }
 
@@ -38,8 +52,45 @@ class PageController extends AbstractController
         $item = $entityManagerInterface->getRepository(Post::class)->findByUrlFilterCat($url, 'blog');
         if (!$item)
             throw $this->createNotFoundException();
-        return $this->render('post/page.html.twig', [
+        if (!$item->getViews())
+            $item->setViews(1);
+        else
+            $item->setViews($item->getViews() + 1);
+        $entityManagerInterface->persist($item);
+
+        return $this->render('post/blog_post.html.twig', [
             'item' => $item,
+            'posts' => $entityManagerInterface->getRepository(Post::class)->findByCat('blog',3),
+        ]);
+    }
+
+    #[Route('/api_docs/{url}', name: 'app_api_docs')]
+    public function app_api_docs(EntityManagerInterface $entityManagerInterface, string $url='home'): Response
+    {
+        $item = $entityManagerInterface->getRepository(Post::class)->findByUrlFilterCat($url, 'api');
+        if (!$item)
+            throw $this->createNotFoundException();
+
+        //get list of trees
+        $tress = $entityManagerInterface->getRepository(Tree::class)->findAllByCat('api');
+        return $this->render('post/api_docs.html.twig', [
+            'item' => $item,
+            'trees' => $tress,
+        ]);
+    }
+
+    #[Route('/guide/{url}', name: 'app_guide')]
+    public function app_guide(EntityManagerInterface $entityManagerInterface, string $url='home'): Response
+    {
+        $item = $entityManagerInterface->getRepository(Post::class)->findByUrlFilterCat($url, 'guide');
+        if (!$item)
+            throw $this->createNotFoundException();
+
+        //get list of trees
+        $tress = $entityManagerInterface->getRepository(Tree::class)->findAllByCat('guide');
+        return $this->render('post/guide.html.twig', [
+            'item' => $item,
+            'trees' => $tress,
         ]);
     }
 }

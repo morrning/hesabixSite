@@ -33,7 +33,7 @@ class PostRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function findByUrlFilterCat($value,$cat='plain'): ?Post
+    public function findByUrlFilterCat($value, $cat = 'plain'): ?Post
     {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.cat', 'c')
@@ -45,14 +45,15 @@ class PostRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    public function findBycat($cat='blog' , $count = 3): array
+    public function findBycat($cat = 'blog', $count = 3, $page = 1): array
     {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.cat', 'c')
             ->where('c.code = :cat')
             ->setParameter('cat', $cat)
+            ->setFirstResult(($page - 1) * $count)
             ->setMaxResults($count)
-            ->orderBy('p.dateSubmit','DESC')
+            ->orderBy('p.dateSubmit', 'DESC')
             ->getQuery()
             ->getResult()
         ;

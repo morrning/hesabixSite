@@ -71,6 +71,9 @@ class Post
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $intro = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $views = null;
+
     public function __construct()
     {
         $this->tree = new ArrayCollection();
@@ -288,6 +291,18 @@ class Post
     public function setIntro(?string $intro): static
     {
         $this->intro = $intro;
+
+        return $this;
+    }
+
+    public function getViews(): ?string
+    {
+        return $this->views;
+    }
+
+    public function setViews(?string $views): static
+    {
+        $this->views = $views;
 
         return $this;
     }

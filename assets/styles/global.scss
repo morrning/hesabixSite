@@ -2,5 +2,10 @@
 
 // customize some Bootstrap variables
 $primary: #1743bb;
+$link-hover-decoration: none;
+$accordion-button-bg: rgb(248, 249, 250);
+$accordion-bg: rgb(248, 249, 250);
+$accordion-button-active-bg: rgb(248, 249, 250);
+$accordion-padding-y: 0.6rem;
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";

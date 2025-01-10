@@ -5,14 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta lang="fa">
 		<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-		{% set des = twigFunctions.systemSettings.des %}
-		{% if block('des') is defined %}
-			{% set _block = block('des') %}
-		{% endif %}
-		{% if _block is defined %}
+		{% if block('des') is not defined %}
 			<meta content="{{twigFunctions.systemSettings.des}}" name="description"/>
 		{% else %}
-			<meta content="{{block('des')}}" name="description"/>
+			<meta content="{{block('des') | trim}}" name="description"/>
+		{% endif %}
+		{% if block('keywords') is not defined %}
+			<meta content="{{twigFunctions.systemSettings.siteKeywords}}" name="keywords"/>
+		{% else %}
+			<meta content="{{block('keywords') | trim}}" name="keywords"/>
 		{% endif %}
 		<meta content="Babak Alizadeh" name="author"/>
 		<title>حسابیکس -
@@ -45,10 +46,10 @@
 							<a class="nav-link" href="{{path('app_home')}}">صفحه نخست</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_home')}}">راهنمای جامع</a>
+							<a class="nav-link" href="{{path('app_guide')}}">راهنمای جامع</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_home')}}">وبلاگ</a>
+							<a class="nav-link" href="{{path('app_blog_home')}}">وبلاگ</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{path('app_page',{'url':'sponsors'})}}">حامیان مالی</a>
@@ -74,7 +75,7 @@
 					<a href="{{path('app_page',{'url':'hsx'})}}" class="nav-link px-2">توکن HSX</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{path('app_page',{'url':'contact'})}}" class="nav-link px-2">مستندات API</a>
+					<a href="{{path('app_api_docs',{'url':'home'})}}" class="nav-link px-2">مستندات API</a>
 				</li>
 				<li class="nav-item">
 					<a href="https://github.com/morrning" target="_blank" class="nav-link px-2">مخازن کد</a>

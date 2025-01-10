@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	وبلاگ
+{% endblock %}
+
+{% block des %}
+	جدیدترین اطلاعات و خبرها از دنیای حسابداری
+{% endblock %}
+
+{% block body %}
+	<main class="container mt-2 mb-5">
+		<h1 class="text-primary fs-3">وبلاگ حسابیکس</h1>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					{% for post in posts %}
+						<div class="col-md-4">
+							<article class="card mb-4">
+								<img src="{{asset('uploaded/'~ post.mainPic)}}" alt="{{post.title}}" class="card-img-top">
+								<div class="card-body">
+									<h5 class="card-title text-primary">{{ post.title }}</h5>
+									<p class="card-text">{{ post.intro }}</p>
+									<a href="{{path('app_blog_post',{'url':post.url})}}" class="btn btn-sm rounded-4 btn-primary stretched-link">ادامه مطلب</a>
+								</div>
+							</article>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="row">
+					<nav aria-label="Page navigation example" style="direction: ltr;">
+						<ul class="pagination justify-content-center">
+							<li class="page-item {% if page == 1 %}disabled{% endif %}">
+								<a href="{{ path('app_blog_home',{'page':page -1})}}" class="page-link">صفحه قبل</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link disabled" href="{{ path('app_blog_home',{'page':page })}}">{{page}}</a>
+							</li>
+							{% if (page + 1) <= maxpages %}
+							<li class="page-item">
+								<a class="page-link" href="{{ path('app_blog_home',{'page':page +1})}}">{{page +1}}</a>
+							</li>
+							{% endif %}
+							{% if (page + 2) <= maxpages %}
+							<li class="page-item">
+								<a class="page-link" href="{{ path('app_blog_home',{'page':page +2})}}">{{page + 2}}</a>
+							</li>
+							{% endif %}
+							{% if (page + 3) <= maxpages %}
+							<li class="page-item">
+								<a class="page-link" href="{{ path('app_blog_home',{'page':page +3})}}">{{page + 3}}</a>
+							</li>
+							{% endif %}
+							<li class="page-item">
+								<a href="{{ path('app_blog_home',{'page':page +1})}}" class="page-link {% if (page + 1) > maxpages %}disabled{% endif %}">صفحه بعدی</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

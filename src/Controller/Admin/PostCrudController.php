@@ -49,4 +49,13 @@ class PostCrudController extends AbstractCrudController
         ;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        $item = new Post();
+        $item->setSubmitter($this->getUser());
+        $item->setDateSubmit(time());
+        $item->setViews(0);
+        return $item;
+    }
+
 }

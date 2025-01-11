@@ -7,6 +7,9 @@ framework:
 
     #esi: true
     #fragments: true
+    http_client:
+        default_options:
+            verify_peer: false
 
 when@test:
     framework:

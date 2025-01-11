@@ -6,7 +6,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta lang="fa">
 		<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-		{% if block('des') is not defined %}
+		<!-- Google tag (gtag.js) -->
+		 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1R1SYQY8E"></script>
+		 <script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		
+		  gtag('config', 'G-K1R1SYQY8E');
+		</script>
+			{% if block('des') is not defined %}
 			<meta content="{{twigFunctions.systemSettings.des}}" name="description"/>
 		{% else %}
 			<meta content="{{block('des') | trim}}" name="description"/>

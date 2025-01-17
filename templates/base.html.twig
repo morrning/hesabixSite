@@ -9,12 +9,12 @@
 		<!-- Google tag (gtag.js) -->
 		 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1R1SYQY8E"></script>
 		 <script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		
-		  gtag('config', 'G-K1R1SYQY8E');
-		</script>
+										  window.dataLayer = window.dataLayer || [];
+										  function gtag(){dataLayer.push(arguments);}
+										  gtag('js', new Date());
+										
+										  gtag('config', 'G-K1R1SYQY8E');
+										</script>
 			{% if block('des') is not defined %}
 			<meta content="{{twigFunctions.systemSettings.des}}" name="description"/>
 		{% else %}
@@ -103,8 +103,20 @@
 					<a href="{{path('app_page',{'url':'privacy'})}}" class="nav-link px-2">حریم خصوصی</a>
 				</li>
 			</ul>
-			<p class="text-center text-body-secondary">
-				با خاطری آسوده،استوار بر روی راهکار‌های ابری پارس‌پک
+			<p class="text-center">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 text-center text-body-tertiary">
+						<img src={{asset('/img/sp/parspack.svg')}} alt="Parspack Co" width="25" class="img-fluid">
+						با خاطری آسوده،استوار بر روی راهکار‌های ابری
+						<a href="https://parspack.com" target="_blank" class="rul">پارس‌پک</a>
+					</div>
+					<div class="col-sm-12 col-md-6 text-center text-body-tertiary">
+						حسابیکس با
+						<img src={{asset('/img/heart.png')}} alt="Love" width="25" class="img-fluid">
+						متن باز است
+					</div>
+				</div>
+
 			</p>
 		</footer>
 	</body>

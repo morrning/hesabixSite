@@ -26,7 +26,7 @@ class RedirectController extends AbstractController
         return $this->redirect("https://api.hesabix.ir/st/" . $params);
     }
 
-    #[Route('/st/{params}', name: 'app_redirect_sell', requirements: ['params' => '.+'])]
+    #[Route('/sl/{params}', name: 'app_redirect_sell', requirements: ['params' => '.+'])]
     public function app_redirect_sell($params): Response
     {
         return $this->redirect("https://api.hesabix.ir/sl/" . $params);

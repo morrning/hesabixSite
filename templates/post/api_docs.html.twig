@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block keywords %}{{item.keywords}}{% endblock %}
+{% block keywords %}
+	{{item.keywords}}
+{% endblock %}
 {% block title %}
 	{{ item.title }}
 {% endblock %}
@@ -11,7 +13,7 @@
 {% block body %}
 	<style></style>
 	<div class="container mt-3">
-        <h1 class="text-primary fs-3">مستندات استفاده از API حسابیکس</h1>
+		<h1 class="text-primary fs-3">مستندات استفاده از API حسابیکس</h1>
 		<div class="row">
 			<div class="col-sm-12 col-md-4 mb-2">
 				<div class="accordion rounded-3" id="accaccordion">
@@ -41,7 +43,7 @@
 				<div class="rounded-3 shadow p-3">
 					<h1 class="text-primary fs-4">{{item.title}}</h1>
 					<p>{{item.body | raw}}</p>
-                    <p>{{item.plain | raw}}</p>
+					<p>{{item.plain | raw}}</p>
 				</div>
 			</div>
 		</div>

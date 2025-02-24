@@ -26,7 +26,7 @@ class PageController extends AbstractController
     #[Route('/blog/{page}', name: 'app_blog_home')]
     public function app_blog_home(EntityManagerInterface $entityManagerInterface, $page = 1): Response
     {
-        $perpage = 6;
+        $perpage = 9;
         $posts = $entityManagerInterface->getRepository(Post::class)->findByCat('blog',$perpage,$page);
         $cat = $entityManagerInterface->getRepository(Cat::class)->findOneBy(['code'=>'blog']);
         $count = $entityManagerInterface->getRepository(Post::class)->count(['cat'=>$cat]);

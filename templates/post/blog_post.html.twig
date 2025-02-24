@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block keywords %}item.keywords
+{% block keywords %}
+	{{ item.keywords }}
 {% endblock %}
 {% block title %}
 	{{ item.title }}
@@ -22,17 +23,17 @@
 					<div class="card bg-body-tertiary my-4">
 						<div class="card-body">
 							<div class="card-text">
-								{{item.intro}}								
+								{{item.intro}}
 							</div>
 							<div class="card-text">
 								<figure>
-									<blockquote class="blockquote">
-									</blockquote>
+									<blockquote class="blockquote"></blockquote>
 									<figcaption class="blockquote-footer">
-										توسط 
+										توسط
 										{{item.submitter.name}}
-										<cite title="Source Title"> در تاریخ
-										{{Jdate.jdate('Y/n/d',item.dateSubmit)}}
+										<cite title="Source Title">
+											در تاریخ
+											{{Jdate.jdate('Y/n/d',item.dateSubmit)}}
 										</cite>
 									</figcaption>
 								</figure>

@@ -36,19 +36,19 @@
 								<a class="page-link disabled" href="{{ path('app_blog_home',{'page':page })}}">{{page}}</a>
 							</li>
 							{% if (page + 1) <= maxpages %}
-							<li class="page-item">
-								<a class="page-link" href="{{ path('app_blog_home',{'page':page +1})}}">{{page +1}}</a>
-							</li>
+								<li class="page-item">
+									<a class="page-link" href="{{ path('app_blog_home',{'page':page +1})}}">{{page +1}}</a>
+								</li>
 							{% endif %}
 							{% if (page + 2) <= maxpages %}
-							<li class="page-item">
-								<a class="page-link" href="{{ path('app_blog_home',{'page':page +2})}}">{{page + 2}}</a>
-							</li>
+								<li class="page-item">
+									<a class="page-link" href="{{ path('app_blog_home',{'page':page +2})}}">{{page + 2}}</a>
+								</li>
 							{% endif %}
 							{% if (page + 3) <= maxpages %}
-							<li class="page-item">
-								<a class="page-link" href="{{ path('app_blog_home',{'page':page +3})}}">{{page + 3}}</a>
-							</li>
+								<li class="page-item">
+									<a class="page-link" href="{{ path('app_blog_home',{'page':page +3})}}">{{page + 3}}</a>
+								</li>
 							{% endif %}
 							<li class="page-item">
 								<a href="{{ path('app_blog_home',{'page':page +1})}}" class="page-link {% if (page + 1) > maxpages %}disabled{% endif %}">صفحه بعدی</a>

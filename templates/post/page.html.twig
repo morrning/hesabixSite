@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block keywords %}item.keywords{% endblock %}
+{% block keywords %}
+	{{item.keywords}}
+{% endblock %}
 {% block title %}
 	{{ item.title }}
 {% endblock %}

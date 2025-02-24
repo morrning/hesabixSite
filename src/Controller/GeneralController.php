@@ -29,4 +29,12 @@ class GeneralController extends AbstractController
             'posts' => $posts
         ], $response);
     }
+
+    #[Route('/reviews', name: 'app_reviews')]
+    public function app_reviews(EntityManagerInterface $em): Response
+    {
+        return $this->render('reviews/reviews.html.twig', [
+            'posts' => $em->getRepository(Post::class)->findBycat('blog', 3)
+        ]);
+    }
 }

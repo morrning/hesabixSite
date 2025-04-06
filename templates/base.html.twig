@@ -41,44 +41,41 @@
 		{% endblock %}
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary">
-			<div class="container-fluid">
-				<a class="navbar-brand text-primary" href="{{path('app_home')}}">
+		<nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary shadow-sm">
+			<div class="container">
+				<a class="navbar-brand text-primary d-flex align-items-center gap-2" href="{{path('app_home')}}">
 					<img src="{{asset('/favicon/favicon.svg')}}" alt="نرم افزار حسابداری آنلاین حسابیکس" width="30" height="30">
-					حسابیکس
+					<span class="">حسابیکس</span>
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_home')}}">صفحه نخست</a>
+							<a class="nav-link px-3 py-2 rounded-3 transition-all" href="{{path('app_home')}}">صفحه نخست</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_guide')}}">راهنمای جامع</a>
+							<a class="nav-link px-3 py-2 rounded-3 transition-all" href="{{path('app_guide')}}">راهنمای جامع</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_blog_home')}}">وبلاگ</a>
+							<a class="nav-link px-3 py-2 rounded-3 transition-all" href="{{path('app_blog_home')}}">وبلاگ</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_page',{'url':'sponsors'})}}">حامیان مالی</a>
+							<a class="nav-link px-3 py-2 rounded-3 transition-all" href="{{path('app_page',{'url':'sponsors'})}}">حامیان مالی</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_page',{'url':'about'})}}">داستان حسابیکس</a>
+							<a class="nav-link px-3 py-2 rounded-3 transition-all" href="{{path('app_page',{'url':'about'})}}">داستان حسابیکس</a>
 						</li>
-						
-						{# <li class="nav-item">
-							<a class="nav-link" href="{{path('app_reviews')}}">دیدگاه کاربران</a>
-						</li> #}
-						
 						<li class="nav-item">
-							<a class="nav-link" href="{{path('app_page',{'url':'contact'})}}">تماس با ما</a>
+							<a class="nav-link px-3 py-2 rounded-3 transition-all" href="{{path('app_page',{'url':'contact'})}}">تماس با ما</a>
 						</li>
 					</ul>
-					<span class="d-flex flex-fill justify-content-end">
-						<a target="_blank" class="btn btn-sm btn-primary rounded-4" href="https://app.hesabix.ir">ورود / عضویت</a>
-					</span>
+					<div class="d-flex">
+						<a target="_blank" class="btn btn-primary rounded-4 px-4 py-2 fw-bold transition-all" href="https://app.hesabix.ir">
+							ورود / عضویت
+						</a>
+					</div>
 				</div>
 			</div>
 		</nav>

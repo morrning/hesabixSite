@@ -8,55 +8,117 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mt-2 mb-5">
-		<h1 class="text-primary fs-3">وبلاگ حسابیکس</h1>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-					{% for post in posts %}
-						<div class="col-md-4">
-							<article class="card mb-4">
-								<img src="{{asset('uploaded/'~ post.mainPic)}}" alt="{{post.title}}" class="card-img-top">
-								<div class="card-body">
-									<h5 class="card-title text-primary">{{ post.title }}</h5>
-									<p class="card-text">{{ post.intro }}</p>
-									<a href="{{path('app_blog_post',{'url':post.url})}}" class="btn btn-sm rounded-4 btn-primary stretched-link">ادامه مطلب</a>
-								</div>
-							</article>
-						</div>
-					{% endfor %}
+	<main class="container-fluid px-0">
+		<div class="blog-header position-relative">
+			<div class="overlay"></div>
+			<div class="container position-relative">
+				<div class="row min-vh-50 align-items-center">
+					<div class="col-12 text-center text-white">
+						<h1 class="display-4 fw-bold mb-4">وبلاگ حسابیکس</h1>
+						<p class="" style="font-family: 'Yekan Bakh FaNum', sans-serif;">جدیدترین اطلاعات و خبرها از دنیای حسابداری</p>
+					</div>
 				</div>
-				<div class="row">
-					<nav aria-label="Page navigation example" style="direction: ltr;">
-						<ul class="pagination justify-content-center">
-							<li class="page-item {% if page == 1 %}disabled{% endif %}">
-								<a href="{{ path('app_blog_home',{'page':page -1})}}" class="page-link">صفحه قبل</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link disabled" href="{{ path('app_blog_home',{'page':page })}}">{{page}}</a>
-							</li>
-							{% if (page + 1) <= maxpages %}
-								<li class="page-item">
-									<a class="page-link" href="{{ path('app_blog_home',{'page':page +1})}}">{{page +1}}</a>
+			</div>
+		</div>
+
+		<div class="container mt-5 mb-5">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row g-4">
+						{% for post in posts %}
+							<div class="col-md-4">
+								<article class="card h-100 border-0 shadow-sm hover-shadow transition-all">
+									<div class="position-relative">
+										<img src="{{asset('uploaded/'~ post.mainPic)}}" alt="{{post.title}}" class="card-img-top object-fit-cover" style="height: 200px;">
+										<div class="position-absolute top-0 end-0 m-3">
+											{% for tree in post.tree %}
+												<span class="badge bg-primary me-1">{{ tree.label }}</span>
+											{% endfor %}
+										</div>
+									</div>
+									<div class="card-body">
+										<div class="d-flex justify-content-between align-items-center mb-2">
+											<small class="text-muted">
+												<i class="fas fa-calendar-alt me-1"></i>
+												{{ Jdate.jdate('Y/n/d',post.dateSubmit) }}
+											</small>
+											<small class="text-muted">
+												<i class="fas fa-eye me-1"></i>
+												{{ post.views }}
+											</small>
+										</div>
+										<h5 class="card-title text-primary fw-bold">{{ post.title }}</h5>
+										<p class="card-text text-muted">{{ post.intro }}</p>
+										<a href="{{path('app_blog_post',{'url':post.url})}}" class="btn btn-primary rounded-pill stretched-link">
+											ادامه مطلب
+											<i class="fas fa-arrow-left me-2"></i>
+										</a>
+									</div>
+								</article>
+							</div>
+						{% endfor %}
+					</div>
+
+					<div class="row mt-5">
+						<nav aria-label="Page navigation">
+							<ul class="pagination justify-content-center">
+								<li class="page-item {% if page == 1 %}disabled{% endif %}">
+									<a href="{{ path('app_blog_home',{'page':page -1})}}" class="page-link rounded-pill mx-1">
+										<i class="fas fa-chevron-right"></i>
+										صفحه قبل
+									</a>
 								</li>
-							{% endif %}
-							{% if (page + 2) <= maxpages %}
 								<li class="page-item">
-									<a class="page-link" href="{{ path('app_blog_home',{'page':page +2})}}">{{page + 2}}</a>
+									<a class="page-link rounded-pill mx-1 active" href="{{ path('app_blog_home',{'page':page })}}">{{page}}</a>
 								</li>
-							{% endif %}
-							{% if (page + 3) <= maxpages %}
+								{% if (page + 1) <= maxpages %}
+									<li class="page-item">
+										<a class="page-link rounded-pill mx-1" href="{{ path('app_blog_home',{'page':page +1})}}">{{page +1}}</a>
+									</li>
+								{% endif %}
+								{% if (page + 2) <= maxpages %}
+									<li class="page-item">
+										<a class="page-link rounded-pill mx-1" href="{{ path('app_blog_home',{'page':page +2})}}">{{page + 2}}</a>
+									</li>
+								{% endif %}
+								{% if (page + 3) <= maxpages %}
+									<li class="page-item">
+										<a class="page-link rounded-pill mx-1" href="{{ path('app_blog_home',{'page':page +3})}}">{{page + 3}}</a>
+									</li>
+								{% endif %}
 								<li class="page-item">
-									<a class="page-link" href="{{ path('app_blog_home',{'page':page +3})}}">{{page + 3}}</a>
+									<a href="{{ path('app_blog_home',{'page':page +1})}}" class="page-link rounded-pill mx-1 {% if (page + 1) > maxpages %}disabled{% endif %}">
+										صفحه بعدی
+										<i class="fas fa-chevron-left"></i>
+									</a>
 								</li>
-							{% endif %}
-							<li class="page-item">
-								<a href="{{ path('app_blog_home',{'page':page +1})}}" class="page-link {% if (page + 1) > maxpages %}disabled{% endif %}">صفحه بعدی</a>
-							</li>
-						</ul>
-					</nav>
+							</ul>
+						</nav>
+					</div>
 				</div>
 			</div>
 		</div>
 	</main>
+
+	<style>
+		.blog-header {
+			background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('img/blog/blog-header.jpg') }}');
+			background-size: cover;
+			background-position: center;
+			min-height: 250px;
+		}
+		.hover-shadow {
+			transition: all 0.3s ease;
+		}
+		.hover-shadow:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+		}
+		.min-vh-50 {
+			min-height: 250px;
+		}
+		.object-fit-cover {
+			object-fit: cover;
+		}
+	</style>
 {% endblock %}

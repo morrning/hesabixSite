@@ -1,0 +1,38 @@
+/* public/css/login.css */
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Vazir', 'Tahoma', sans-serif; /* فونت فارسی دلخواه */
+}
+
+.login-wrapper {
+    direction: rtl;
+}
+
+.form-group label {
+    text-align: right;
+}
+
+.form-control {
+    direction: rtl;
+    text-align: right;
+}
+
+.btn {
+    direction: rtl;
+}
+
+.checkbox label {
+    padding-right: 25px; /* فاصله برای چک‌باکس */
+    padding-left: 0;
+}
+
+.login-box {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* تنظیمات اضافی برای المان‌های خاص */
+.login-box-header h1 {
+    text-align: right;
+}

@@ -8,9 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[Broadcast]
+#[UniqueEntity(fields: ['url'], message: 'این URL قبلاً استفاده شده است.')]
 class Post
 {
     #[ORM\Id]
@@ -34,7 +37,8 @@ class Post
     #[ORM\Column(nullable: true)]
     private ?bool $publish = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true, unique: true)]
+    #[Assert\NotBlank(message: 'URL نمی‌تواند خالی باشد', allowNull: false)]
     private ?string $url = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -93,7 +97,6 @@ class Post
     public function setTitle(?string $title): static
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -105,7 +108,6 @@ class Post
     public function setSubmitter(?User $submitter): static
     {
         $this->submitter = $submitter;
-
         return $this;
     }
 
@@ -117,7 +119,6 @@ class Post
     public function setBody(?string $body): static
     {
         $this->body = $body;
-
         return $this;
     }
 
@@ -129,7 +130,6 @@ class Post
     public function setDateSubmit(string $dateSubmit): static
     {
         $this->dateSubmit = $dateSubmit;
-
         return $this;
     }
 
@@ -141,7 +141,6 @@ class Post
     public function setPublish(?bool $publish): static
     {
         $this->publish = $publish;
-
         return $this;
     }
 
@@ -153,7 +152,6 @@ class Post
     public function setUrl(?string $url): static
     {
         $this->url = $url;
-
         return $this;
     }
 
@@ -165,7 +163,6 @@ class Post
     public function setMainPic(?string $mainPic): static
     {
         $this->mainPic = $mainPic;
-
         return $this;
     }
 
@@ -177,7 +174,6 @@ class Post
     public function setPlain(?string $plain): static
     {
         $this->plain = $plain;
-
         return $this;
     }
 
@@ -189,7 +185,6 @@ class Post
     public function setVersion(?string $version): static
     {
         $this->version = $version;
-
         return $this;
     }
 
@@ -201,7 +196,6 @@ class Post
     public function setKeywords(?string $keywords): static
     {
         $this->keywords = $keywords;
-
         return $this;
     }
 
@@ -213,7 +207,6 @@ class Post
     public function setSort(?string $sort): static
     {
         $this->sort = $sort;
-
         return $this;
     }
 
@@ -225,7 +218,6 @@ class Post
     public function setCat(?Cat $cat): static
     {
         $this->cat = $cat;
-
         return $this;
     }
 
@@ -242,14 +234,12 @@ class Post
         if (!$this->tree->contains($tree)) {
             $this->tree->add($tree);
         }
-
         return $this;
     }
 
     public function removeTree(Tree $tree): static
     {
         $this->tree->removeElement($tree);
-
         return $this;
     }
 
@@ -267,19 +257,16 @@ class Post
             $this->comments->add($comment);
             $comment->setPost($this);
         }
-
         return $this;
     }
 
     public function removeComment(Comment $comment): static
     {
         if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
             if ($comment->getPost() === $this) {
                 $comment->setPost(null);
             }
         }
-
         return $this;
     }
 
@@ -291,7 +278,6 @@ class Post
     public function setIntro(?string $intro): static
     {
         $this->intro = $intro;
-
         return $this;
     }
 
@@ -303,7 +289,6 @@ class Post
     public function setViews(?string $views): static
     {
         $this->views = $views;
-
         return $this;
     }
 }

@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class PageController extends AbstractController
 {
@@ -23,26 +25,48 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/{page}', name: 'app_blog_home')]
-    public function app_blog_home(EntityManagerInterface $entityManagerInterface, $page = 1): Response
+    #[Route('/blog/{page}', name: 'app_blog_home', defaults: ['page' => 1])]
+    public function app_blog_home(EntityManagerInterface $entityManagerInterface, Request $request, $page = 1): Response
     {
         $perpage = 9;
-        $posts = $entityManagerInterface->getRepository(Post::class)->findByCat('blog',$perpage,$page);
-        $cat = $entityManagerInterface->getRepository(Cat::class)->findOneBy(['code'=>'blog']);
-        $count = $entityManagerInterface->getRepository(Post::class)->count(['cat'=>$cat]);
-        if(fmod($count,$perpage) == 0){
-            $maxpages = $count/$perpage;
+        $search = $request->query->get('search', ''); // پارامتر جستجو از URL
+
+        $postRepository = $entityManagerInterface->getRepository(Post::class);
+        $catRepository = $entityManagerInterface->getRepository(Cat::class);
+
+        // پیدا کردن دسته‌بندی "blog"
+        $cat = $catRepository->findOneBy(['code' => 'blog']);
+
+        // گرفتن پست‌ها با فیلتر جستجو
+        $queryBuilder = $postRepository->createQueryBuilder('p')
+            ->where('p.cat = :cat')
+            ->setParameter('cat', $cat)
+            ->orderBy('p.dateSubmit', 'DESC'); // مرتب‌سازی بر اساس جدیدترین
+
+        if ($search) {
+            $queryBuilder->andWhere('p.title LIKE :search OR p.intro LIKE :search')
+                         ->setParameter('search', "%$search%");
         }
-        else{
-            $maxpages = ($count/$perpage) + 1;
-        }
-        $maxpages = $count / $perpage;
+
+        $count = count($queryBuilder->getQuery()->getResult());
+        $maxpages = ceil($count / $perpage); // محاسبه حداکثر صفحات
+
+        $posts = $queryBuilder->setMaxResults($perpage)
+                              ->setFirstResult(($page - 1) * $perpage)
+                              ->getQuery()
+                              ->getResult();
+
+        // گرفتن همه دسته‌بندی‌ها برای سایدبار
+        $categories = $catRepository->findAll();
+
         return $this->render('post/blog_home.html.twig', [
             'posts' => $posts,
             'page' => $page,
-            'perpage'=> $perpage,
+            'perpage' => $perpage,
             'count' => $count,
-            'maxpages' => $maxpages
+            'maxpages' => $maxpages,
+            'categories' => $categories,
+            'search' => $search,
         ]);
     }
 

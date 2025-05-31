@@ -5,17 +5,20 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta lang="fa">
-		<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+		<meta
+		content="width=device-width,initial-scale=1.0" name="viewport"/>
 		<!-- Google tag (gtag.js) -->
-		 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1R1SYQY8E"></script>
-		 <script>
-										  window.dataLayer = window.dataLayer || [];
-										  function gtag(){dataLayer.push(arguments);}
-										  gtag('js', new Date());
-										
-										  gtag('config', 'G-K1R1SYQY8E');
-										</script>
-			{% if block('des') is not defined %}
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1R1SYQY8E"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'G-K1R1SYQY8E');
+		</script>
+		{% if block('des') is not defined %}
 			<meta content="{{twigFunctions.systemSettings.des}}" name="description"/>
 		{% else %}
 			<meta content="{{block('des') | trim}}" name="description"/>
@@ -82,7 +85,16 @@
 		{% block body %}{% endblock %}
 
 		<footer class="py-3 my-4">
+			<div class="d-flex justify-content-center align-items-center gap-3 mb-3">
+				<a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=614357&Code=4ATiNTREoPRD5Lz3zwc9zyz0zWGJiZL3'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=614357&Code=4ATiNTREoPRD5Lz3zwc9zyz0zWGJiZL3' alt='' style='cursor:pointer' code='4ATiNTREoPRD5Lz3zwc9zyz0zWGJiZL3'></a>
+				<script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
+				<img referrerpolicy='origin' id='rgvjoeukesgtapfufukzrgvj' style='cursor:pointer' onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=380563&p=xlaomcsiobpddshwgvkaxlao", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt='logo-samandehi' src='https://logo.samandehi.ir/logo.aspx?id=380563&p=qftiaqgwlymaujynwlbqqfti'/>
+			</div>
+
 			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+				<li class="nav-item">
+					<a target="_blank" href="https://azadbeh.ir/projects/%D8%AD%D8%B3%D8%A7%D8%A8%DB%8C%DA%A9%D8%B3" class="nav-link px-2">فرصت‌های شغلی</a>
+				</li>
 				<li class="nav-item">
 					<a href="{{path('app_page',{'url':'hsx'})}}" class="nav-link px-2">توکن HSX</a>
 				</li>
